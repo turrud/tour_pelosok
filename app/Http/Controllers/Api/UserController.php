@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserCollection;
 use App\Http\Requests\UserStoreRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
@@ -34,6 +35,12 @@ class UserController extends Controller
         $validated = $request->validated();
 
         $validated['password'] = Hash::make($validated['password']);
+
+        if ($request->hasFile('profile_photo_path')) {
+            $validated['profile_photo_path'] = $request
+                ->file('profile_photo_path')
+                ->store('public');
+        }
 
         $user = User::create($validated);
 
@@ -61,6 +68,16 @@ class UserController extends Controller
             $validated['password'] = Hash::make($validated['password']);
         }
 
+        if ($request->hasFile('profile_photo_path')) {
+            if ($user->profile_photo_path) {
+                Storage::delete($user->profile_photo_path);
+            }
+
+            $validated['profile_photo_path'] = $request
+                ->file('profile_photo_path')
+                ->store('public');
+        }
+
         $user->update($validated);
 
         $user->syncRoles($request->roles);
@@ -71,6 +88,10 @@ class UserController extends Controller
     public function destroy(Request $request, User $user): Response
     {
         $this->authorize('delete', $user);
+
+        if ($user->profile_photo_path) {
+            Storage::delete($user->profile_photo_path);
+        }
 
         $user->delete();
 

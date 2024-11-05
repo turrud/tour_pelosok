@@ -13,7 +13,7 @@ class TagaboutSeeder extends Seeder
     public function run(): void
     {
         Tagabout::factory()
-            ->count(5)
+            ->count(3)
             ->create();
     }
 }

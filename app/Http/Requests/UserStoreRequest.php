@@ -21,6 +21,7 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'profile_photo_path' => ['image', 'max:1024', 'nullable'],
             'name' => ['required', 'max:255', 'string'],
             'email' => ['required', 'unique:users,email', 'email'],
             'password' => ['required'],

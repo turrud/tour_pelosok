@@ -22,6 +22,7 @@ class PeopleController extends Controller
         $search = $request->get('search', '');
 
         $allPeople = People::search($search)
+            ->orderBy('order_number', 'asc')
             ->latest()
             ->paginate(5)
             ->withQueryString();

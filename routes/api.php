@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\home_taghomeController;
 use App\Http\Controllers\Api\TaghomeHomesController;
 use App\Http\Controllers\Api\PackageImageController;
 use App\Http\Controllers\Api\ExploreImageController;
+use App\Http\Controllers\Api\PackageOrdersController;
 use App\Http\Controllers\Api\HomeHomeImagesController;
 use App\Http\Controllers\Api\AboutTagaboutsController;
 use App\Http\Controllers\Api\TagaboutAboutsController;
@@ -162,6 +163,16 @@ Route::name('api.')
             PackagePackageImagesController::class,
             'store',
         ])->name('packages.package-images.store');
+
+        // Package Orders
+        Route::get('/packages/{package}/orders', [
+            PackageOrdersController::class,
+            'index',
+        ])->name('packages.orders.index');
+        Route::post('/packages/{package}/orders', [
+            PackageOrdersController::class,
+            'store',
+        ])->name('packages.orders.store');
 
         // Package Tagpackages
         Route::get('/packages/{package}/tagpackages', [

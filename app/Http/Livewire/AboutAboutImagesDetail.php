@@ -139,7 +139,8 @@ class AboutAboutImagesDetail extends Component
     public function render(): View
     {
         return view('livewire.about-about-images-detail', [
-            'aboutImages' => $this->about->aboutImages()->paginate(20),
+            // 'aboutImages' => $this->about->aboutImages()->paginate(20),
+            'aboutImages' => $this->home->aboutImages()->orderBy('order_number', 'asc')->paginate(20),
         ]);
     }
 }

@@ -2,19 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PeopleController;
-use App\Http\Controllers\TaghomeController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ExploreController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\TaghomeController;
+use App\Http\Controllers\PageHomeController;
 use App\Http\Controllers\TagaboutController;
-use App\Http\Controllers\TagpackageController;
-use App\Http\Controllers\TagexploreController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\TagexploreController;
+use App\Http\Controllers\TagpackageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,25 @@ use App\Http\Controllers\PermissionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// page view
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+// Route untuk PageHomeController (public)
+Route::get('/', [PageHomeController::class, 'index'])->name('page.homes.index');
+
+// Route resource untuk homes, tetapi mengecualikan index
+Route::resource('homes', PageHomeController::class)->except(['index'])->names([
+    'show' => 'page.homes.show',
+    'create' => 'page.homes.create',
+    'store' => 'page.homes.store',
+    'edit' => 'page.homes.edit',
+    'update' => 'page.homes.update',
+    'destroy' => 'page.homes.destroy',
+]);
+
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', function () {
@@ -37,7 +54,7 @@ Route::middleware(['auth:sanctum', 'verified'])
     })
     ->name('dashboard');
 
-Route::prefix('/')
+Route::prefix('/dashboard')
     ->middleware(['auth:sanctum', 'verified'])
     ->group(function () {
         Route::resource('roles', RoleController::class);
@@ -57,6 +74,7 @@ Route::prefix('/')
         Route::get('all-people/{people}/edit', [PeopleController::class,'edit',])->name('all-people.edit');
         Route::put('all-people/{people}', [PeopleController::class,'update',])->name('all-people.update');
         Route::delete('all-people/{people}', [PeopleController::class,'destroy',])->name('all-people.destroy');
+        //
 
         Route::resource('packages', PackageController::class);
         Route::resource('tagpackages', TagpackageController::class);

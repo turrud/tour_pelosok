@@ -20,7 +20,7 @@ class PeopleStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'order_number' => ['required', 'numeric'],
+            'order_number' => 'required|numeric|unique:people,order_number,' . ($this->people->id ?? 'NULL'),
             'name' => ['required', 'max:255', 'string'],
             'job_title' => ['required', 'max:255', 'string'],
             'description' => ['nullable', 'max:255', 'string'],

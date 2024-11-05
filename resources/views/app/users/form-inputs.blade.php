@@ -2,6 +2,47 @@
 
 <div class="flex flex-wrap">
     <x-inputs.group class="w-full">
+        <div
+            x-data="imageViewer('{{ $editing && $user->profile_photo_path ? \Storage::url($user->profile_photo_path) : '' }}')"
+        >
+            <x-inputs.partials.label
+                name="profile_photo_path"
+                label="Photo Profile"
+            ></x-inputs.partials.label
+            ><br />
+
+            <!-- Show the image -->
+            <template x-if="imageUrl">
+                <img
+                    :src="imageUrl"
+                    class="object-cover rounded border border-gray-200"
+                    style="width: 100px; height: 100px;"
+                />
+            </template>
+
+            <!-- Show the gray box when image is not available -->
+            <template x-if="!imageUrl">
+                <div
+                    class="border rounded border-gray-200 bg-gray-100"
+                    style="width: 100px; height: 100px;"
+                ></div>
+            </template>
+
+            <div class="mt-2">
+                <input
+                    type="file"
+                    name="profile_photo_path"
+                    id="profile_photo_path"
+                    @change="fileChosen"
+                />
+            </div>
+
+            @error('profile_photo_path')
+            @include('components.inputs.partials.error') @enderror
+        </div>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="name"
             label="Name"

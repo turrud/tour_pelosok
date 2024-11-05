@@ -13,7 +13,7 @@ class ExploreSeeder extends Seeder
     public function run(): void
     {
         Explore::factory()
-            ->count(5)
+            ->count(3)
             ->create();
     }
 }

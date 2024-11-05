@@ -43,7 +43,7 @@
                         <h5 class="font-medium text-gray-700">
                             @lang('crud.orders.inputs.total_price')
                         </h5>
-                        <span>{{ $order->total_price ?? '-' }}</span>
+                        <span>{{ $order->total_price ? 'Rp ' . number_format($order->total_price, 0, ',', '.') : '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">

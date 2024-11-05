@@ -25,7 +25,7 @@ class OrderStoreRequest extends FormRequest
             'phone' => ['required', 'max:255', 'string'],
             'person' => ['required', 'numeric'],
             'total_price' => ['required', 'max:255'],
-            'status' => ['required', 'in:unpaid,paid'],
+            'status' => ['required', 'in:Unpaid,Paid'],
         ];
     }
 }

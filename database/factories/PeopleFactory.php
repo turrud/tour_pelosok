@@ -25,8 +25,8 @@ class PeopleFactory extends Factory
         return [
             'order_number' => $this->faker->randomNumber(0),
             'name' => $this->faker->name(),
-            'job_title' => $this->faker->sentence(10),
-            'description' => $this->faker->sentence(15),
+            'job_title' => $this->faker->sentence(2),
+            'description' => $this->faker->sentence(10),
         ];
     }
 }

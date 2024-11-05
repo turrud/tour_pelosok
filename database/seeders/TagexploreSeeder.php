@@ -13,7 +13,7 @@ class TagexploreSeeder extends Seeder
     public function run(): void
     {
         Tagexplore::factory()
-            ->count(5)
+            ->count(3)
             ->create();
     }
 }

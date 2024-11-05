@@ -20,7 +20,13 @@ class Order extends Model
         'person',
         'total_price',
         'status',
+        'package_id',
     ];
 
     protected $searchableFields = ['*'];
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
 }

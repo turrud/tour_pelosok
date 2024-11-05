@@ -13,7 +13,7 @@ class HomeImageSeeder extends Seeder
     public function run(): void
     {
         HomeImage::factory()
-            ->count(5)
+            ->count(3)
             ->create();
     }
 }

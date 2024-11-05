@@ -57,6 +57,12 @@
 
                 <livewire:package-package-images-detail :package="$package" />
             </x-partials.card>
+            @endcan @can('view-any', App\Models\Order::class)
+            <x-partials.card class="mt-5">
+                <x-slot name="title"> Orders </x-slot>
+
+                <livewire:package-orders-detail :package="$package" />
+            </x-partials.card>
             @endcan @can('view-any', App\Models\Tagpackage::class)
             <x-partials.card class="mt-5">
                 <x-slot name="title"> Tagpackages </x-slot>

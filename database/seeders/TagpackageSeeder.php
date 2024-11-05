@@ -13,7 +13,7 @@ class TagpackageSeeder extends Seeder
     public function run(): void
     {
         Tagpackage::factory()
-            ->count(5)
+            ->count(3)
             ->create();
     }
 }

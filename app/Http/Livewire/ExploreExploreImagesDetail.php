@@ -141,7 +141,8 @@ class ExploreExploreImagesDetail extends Component
     public function render(): View
     {
         return view('livewire.explore-explore-images-detail', [
-            'exploreImages' => $this->explore->exploreImages()->paginate(20),
+            // 'exploreImages' => $this->explore->exploreImages()->paginate(20),
+            'exploreImages' => $this->home->exploreImages()->orderBy('order_number', 'asc')->paginate(20),
         ]);
     }
 }

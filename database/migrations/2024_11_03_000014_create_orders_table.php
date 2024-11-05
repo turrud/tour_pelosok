@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->integer('person');
             $table->bigInteger('total_price');
             $table->enum('status', ['Unpaid', 'Paid']);
+            $table->unsignedBigInteger('package_id');
 
             $table->timestamps();
             $table->softDeletes();

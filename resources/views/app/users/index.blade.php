@@ -50,6 +50,9 @@
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.profile_photo_path')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.users.inputs.name')
                                 </th>
                                 <th class="px-4 py-3 text-left">
@@ -61,6 +64,11 @@
                         <tbody class="text-gray-600">
                             @forelse($users as $user)
                             <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 text-left">
+                                    <x-partials.thumbnail
+                                        src="{{ $user->profile_photo_path ? \Storage::url($user->profile_photo_path) : '' }}"
+                                    />
+                                </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $user->name ?? '-' }}
                                 </td>
@@ -132,7 +140,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -140,7 +148,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     <div class="mt-10 px-4">
                                         {!! $users->render() !!}
                                     </div>

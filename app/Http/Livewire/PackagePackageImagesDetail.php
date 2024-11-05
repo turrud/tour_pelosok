@@ -141,7 +141,7 @@ class PackagePackageImagesDetail extends Component
     public function render(): View
     {
         return view('livewire.package-package-images-detail', [
-            'packageImages' => $this->package->packageImages()->paginate(20),
+            'packageImages' => $this->package->packageImages()->orderBy('order_number', 'asc')->paginate(20),
         ]);
     }
 }

@@ -13,7 +13,7 @@ class PackageImageSeeder extends Seeder
     public function run(): void
     {
         PackageImage::factory()
-            ->count(5)
+            ->count(3)
             ->create();
     }
 }

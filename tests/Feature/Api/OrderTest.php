@@ -5,6 +5,8 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\Order;
 
+use App\Models\Package;
+
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -52,6 +54,8 @@ class OrderTest extends TestCase
 
         $response = $this->postJson(route('api.orders.store'), $data);
 
+        unset($data['package_id']);
+
         $this->assertDatabaseHas('orders', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
@@ -64,6 +68,8 @@ class OrderTest extends TestCase
     {
         $order = Order::factory()->create();
 
+        $package = Package::factory()->create();
+
         $data = [
             'name' => $this->faker->name(),
             'address' => $this->faker->address(),
@@ -71,9 +77,12 @@ class OrderTest extends TestCase
             'person' => $this->faker->randomNumber(0),
             'total_price' => $this->faker->randomNumber(),
             'status' => 'Unpaid',
+            'package_id' => $package->id,
         ];
 
         $response = $this->putJson(route('api.orders.update', $order), $data);
+
+        unset($data['package_id']);
 
         $data['id'] = $order->id;
 

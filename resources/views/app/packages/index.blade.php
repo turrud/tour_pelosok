@@ -74,7 +74,8 @@
                                     {{ $package->description ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $package->price ?? '-' }}
+                                    {{ $package->price ? 'Rp ' . number_format($package->price, 0, ',', '.') : '-' }}
+
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     <x-partials.thumbnail

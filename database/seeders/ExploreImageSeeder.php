@@ -13,7 +13,7 @@ class ExploreImageSeeder extends Seeder
     public function run(): void
     {
         ExploreImage::factory()
-            ->count(5)
+            ->count(3)
             ->create();
     }
 }

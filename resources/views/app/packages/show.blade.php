@@ -31,7 +31,7 @@
                         <h5 class="font-medium text-gray-700">
                             @lang('crud.packages.inputs.price')
                         </h5>
-                        <span>{{ $package->price ?? '-' }}</span>
+                        <span>{{ $package->price ? 'Rp ' . number_format($package->price, 0, ',', '.') : '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">

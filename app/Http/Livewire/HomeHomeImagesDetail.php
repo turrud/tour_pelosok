@@ -139,7 +139,10 @@ class HomeHomeImagesDetail extends Component
     public function render(): View
     {
         return view('livewire.home-home-images-detail', [
-            'homeImages' => $this->home->homeImages()->paginate(20),
+            // 'homeImages' => $this->home->homeImages()->paginate(20),
+            'homeImages' => $this->home->homeImages()->orderBy('order_number', 'asc')->paginate(20),
+
         ]);
-    }
+ 
+   }
 }

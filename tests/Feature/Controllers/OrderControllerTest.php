@@ -5,6 +5,8 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\Order;
 
+use App\Models\Package;
+
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -64,6 +66,8 @@ class OrderControllerTest extends TestCase
 
         $response = $this->post(route('orders.store'), $data);
 
+        unset($data['package_id']);
+
         $this->assertDatabaseHas('orders', $data);
 
         $order = Order::latest('id')->first();
@@ -108,6 +112,8 @@ class OrderControllerTest extends TestCase
     {
         $order = Order::factory()->create();
 
+        $package = Package::factory()->create();
+
         $data = [
             'name' => $this->faker->name(),
             'address' => $this->faker->address(),
@@ -115,9 +121,12 @@ class OrderControllerTest extends TestCase
             'person' => $this->faker->randomNumber(0),
             'total_price' => $this->faker->randomNumber(),
             'status' => 'Unpaid',
+            'package_id' => $package->id,
         ];
 
         $response = $this->put(route('orders.update', $order), $data);
+
+        unset($data['package_id']);
 
         $data['id'] = $order->id;
 

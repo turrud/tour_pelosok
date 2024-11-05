@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Package;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\OrderStoreRequest;
 use App\Http\Requests\OrderUpdateRequest;
@@ -47,6 +49,12 @@ class OrderController extends Controller
 
         $validated = $request->validated();
 
+        // Ambil harga paket berdasarkan package_id yang dipilih
+        $package = Package::find($validated['package_id']);
+        if ($package) {
+            $validated['total_price'] = $validated['person'] * $package->price;
+        }
+
         $order = Order::create($validated);
 
         return redirect()
@@ -84,6 +92,11 @@ class OrderController extends Controller
         $this->authorize('update', $order);
 
         $validated = $request->validated();
+
+        $package = Package::find($validated['package_id']);
+        if ($package) {
+            $validated['total_price'] = $validated['person'] * $package->price;
+        }
 
         $order->update($validated);
 

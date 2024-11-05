@@ -86,7 +86,8 @@
                                     {{ $order->person ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $order->total_price ?? '-' }}
+                                    {{-- {{ $order->total_price ?? '-' }} --}}
+                                    {{ $order->total_price ? 'Rp ' . number_format($order->total_price, 0, ',', '.') : '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $order->status ?? '-' }}

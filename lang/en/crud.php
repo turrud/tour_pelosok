@@ -30,6 +30,7 @@ return [
         'edit_title' => 'Edit User',
         'show_title' => 'Show User',
         'inputs' => [
+            'profile_photo_path' => 'Photo Profile',
             'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
@@ -295,6 +296,23 @@ return [
             'email' => 'Email',
             'subject' => 'Subject',
             'message' => 'Message',
+        ],
+    ],
+
+    'package_orders' => [
+        'name' => 'Package Orders',
+        'index_title' => 'Orders List',
+        'new_title' => 'New Order',
+        'create_title' => 'Create Order',
+        'edit_title' => 'Edit Order',
+        'show_title' => 'Show Order',
+        'inputs' => [
+            'name' => 'Name',
+            'address' => 'Address',
+            'phone' => 'Phone',
+            'person' => 'Person',
+            'total_price' => 'Total Price',
+            'status' => 'Status',
         ],
     ],
 

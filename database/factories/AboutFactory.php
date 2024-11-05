@@ -23,8 +23,8 @@ class AboutFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(10),
-            'description' => $this->faker->sentence(15),
+            'title' => $this->faker->sentence(3),
+            'description' => $this->faker->sentence(10),
         ];
     }
 }

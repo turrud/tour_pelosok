@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('dashboard') }}"">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -17,6 +17,18 @@
                     </x-nav-link>
                 </div>
 
+                @if (Auth::user()->can('view-any', App\Models\User::class) ||
+                    Auth::user()->can('view-any', App\Models\Home::class) ||
+                    Auth::user()->can('view-any', App\Models\Taghome::class) ||
+                    Auth::user()->can('view-any', App\Models\About::class) ||
+                    Auth::user()->can('view-any', App\Models\Tagabout::class) ||
+                    Auth::user()->can('view-any', App\Models\People::class) ||
+                    Auth::user()->can('view-any', App\Models\Package::class) ||
+                    Auth::user()->can('view-any', App\Models\Tagpackage::class) ||
+                    Auth::user()->can('view-any', App\Models\Order::class) ||
+                    Auth::user()->can('view-any', App\Models\Explore::class) ||
+                    Auth::user()->can('view-any', App\Models\Tagexplore::class) ||
+                    Auth::user()->can('view-any', App\Models\Contact::class))
                 <x-nav-dropdown title="Apps" align="right" width="48">
                         @can('view-any', App\Models\User::class)
                         <x-dropdown-link href="{{ route('users.index') }}">
@@ -79,21 +91,21 @@
                         </x-dropdown-link>
                         @endcan
                 </x-nav-dropdown>
+                @endif
+                @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
+                    Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
+                <x-nav-dropdown title="Access Management" align="right" width="48">
 
-                    @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
-                        Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
-                    <x-nav-dropdown title="Access Management" align="right" width="48">
-                        
-                        @can('view-any', Spatie\Permission\Models\Role::class)
-                        <x-dropdown-link href="{{ route('roles.index') }}">Roles</x-dropdown-link>
-                        @endcan
-                    
-                        @can('view-any', Spatie\Permission\Models\Permission::class)
-                        <x-dropdown-link href="{{ route('permissions.index') }}">Permissions</x-dropdown-link>
-                        @endcan
-                        
-                    </x-nav-dropdown>
-                    @endif
+                    @can('view-any', Spatie\Permission\Models\Role::class)
+                    <x-dropdown-link href="{{ route('roles.index') }}">Roles</x-dropdown-link>
+                    @endcan
+
+                    @can('view-any', Spatie\Permission\Models\Permission::class)
+                    <x-dropdown-link href="{{ route('permissions.index') }}">Permissions</x-dropdown-link>
+                    @endcan
+
+                </x-nav-dropdown>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -219,7 +231,7 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            
+
                 @can('view-any', App\Models\User::class)
                 <x-responsive-nav-link href="{{ route('users.index') }}">
                 Users
@@ -281,17 +293,17 @@
                 </x-responsive-nav-link>
                 @endcan
 
-                @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
+                @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
                     Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
-                    
+
                     @can('view-any', Spatie\Permission\Models\Role::class)
                     <x-responsive-nav-link href="{{ route('roles.index') }}">Roles</x-responsive-nav-link>
                     @endcan
-                
+
                     @can('view-any', Spatie\Permission\Models\Permission::class)
                     <x-responsive-nav-link href="{{ route('permissions.index') }}">Permissions</x-responsive-nav-link>
                     @endcan
-                    
+
                 @endif
         </div>
 

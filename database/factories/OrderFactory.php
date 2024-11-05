@@ -29,6 +29,7 @@ class OrderFactory extends Factory
             'person' => $this->faker->randomNumber(0),
             'total_price' => $this->faker->randomNumber(),
             'status' => 'Unpaid',
+            'package_id' => \App\Models\Package::factory(),
         ];
     }
 }

@@ -17,6 +17,15 @@
                 <div class="mt-4 px-4">
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.profile_photo_path')
+                        </h5>
+                        <x-partials.thumbnail
+                            src="{{ $user->profile_photo_path ? \Storage::url($user->profile_photo_path) : '' }}"
+                            size="150"
+                        />
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.users.inputs.name')
                         </h5>
                         <span>{{ $user->name ?? '-' }}</span>

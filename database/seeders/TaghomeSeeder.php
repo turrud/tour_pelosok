@@ -13,7 +13,7 @@ class TaghomeSeeder extends Seeder
     public function run(): void
     {
         Taghome::factory()
-            ->count(5)
+            ->count(3)
             ->create();
     }
 }

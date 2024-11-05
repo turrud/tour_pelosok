@@ -22,6 +22,11 @@ class Package extends Model
         return $this->hasMany(PackageImage::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function tagpackages()
     {
         return $this->belongsToMany(Tagpackage::class);
