@@ -13,9 +13,12 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\TaghomeController;
 use App\Http\Controllers\PageHomeController;
 use App\Http\Controllers\TagaboutController;
+use App\Http\Controllers\PageAboutController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\TagexploreController;
 use App\Http\Controllers\TagpackageController;
+use App\Http\Controllers\PageContactController;
+use App\Http\Controllers\PageExploreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +50,37 @@ Route::resource('homes', PageHomeController::class)->except(['index'])->names([
     'destroy' => 'page.homes.destroy',
 ]);
 
+// Page About
+Route::resource('about', PageAboutController::class)->names([
+    'index' => 'page.about.index',
+    'show' => 'page.about.show',
+    'create' => 'page.about.create',
+    'store' => 'page.about.store',
+    'edit' => 'page.about.edit',
+    'update' => 'page.about.update',
+    'destroy' => 'page.about.destroy',
+]);
+// Page Explore
+Route::resource('explore', PageExploreController::class)->names([
+    'index' => 'page.explore.index',
+    'show' => 'page.explore.show',
+    'create' => 'page.explore.create',
+    'store' => 'page.explore.store',
+    'edit' => 'page.explore.edit',
+    'update' => 'page.explore.update',
+    'destroy' => 'page.explore.destroy',
+]);
+// Page Contact
+Route::resource('contact', PageContactController::class)->names([
+    'index' => 'page.contact.index',
+    'show' => 'page.contact.show',
+    'create' => 'page.contact.create',
+    'store' => 'page.contact.store',
+    'edit' => 'page.contact.edit',
+    'update' => 'page.contact.update',
+    'destroy' => 'page.contact.destroy',
+]);
+// ----
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', function () {

@@ -24,7 +24,7 @@ class PeopleUpdateRequest extends FormRequest
             'name' => ['required', 'max:255', 'string'],
             'job_title' => ['required', 'max:255', 'string'],
             'description' => ['nullable', 'max:255', 'string'],
-            'image' => ['nullable', 'image', 'max:1024'],
+            'image' => ['nullable', 'image', 'max:10024'],
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Explore;
 use Illuminate\Http\Request;
 
 class PageExploreController extends Controller
@@ -12,6 +13,8 @@ class PageExploreController extends Controller
     public function index()
     {
         //
+        $explores = Explore::with(['exploreImages', 'tagexplores'])->get();
+        return view('frontend.explore.index', compact('explores'));
     }
 
     /**

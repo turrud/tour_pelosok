@@ -32,7 +32,7 @@ class PackagePackageImagesDetail extends Component
     protected $rules = [
         'packageImage.order_number' => ['required', 'numeric'],
         'packageImage.caption' => ['nullable', 'max:255', 'string'],
-        'packageImageImage' => ['nullable', 'image', 'max:1024'],
+        'packageImageImage' => ['nullable', 'image', 'max:10024'],
     ];
 
     public function mount(Package $package): void

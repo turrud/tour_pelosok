@@ -32,7 +32,7 @@ class ExploreExploreImagesDetail extends Component
     protected $rules = [
         'exploreImage.order_number' => ['required', 'numeric'],
         'exploreImage.caption' => ['nullable', 'max:255', 'string'],
-        'exploreImageImage' => ['nullable', 'image', 'max:1024'],
+        'exploreImageImage' => ['nullable', 'image', 'max:10024'],
     ];
 
     public function mount(Explore $explore): void

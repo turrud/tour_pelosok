@@ -1,0 +1,37 @@
+/* font */
+.font-filter {
+    font-family: monospace;
+}
+/* font */
+
+/* Home */
+.tag-filter {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    margin: 10px 0;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+}
+.tag-button {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.tag-button:hover {
+    background: #e9ecef;
+}
+.tag-button.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+.carousel-item.filtered {
+    display: none;
+}
+/* Home */

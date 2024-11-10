@@ -32,7 +32,7 @@ class AboutAboutImagesDetail extends Component
     protected $rules = [
         'aboutImage.order_number' => ['required', 'numeric'],
         'aboutImage.caption' => ['nullable', 'max:255', 'string'],
-        'aboutImageImage' => ['nullable', 'image', 'max:1024'],
+        'aboutImageImage' => ['nullable', 'image', 'max:10024'],
     ];
 
     public function mount(About $about): void

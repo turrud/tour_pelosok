@@ -32,7 +32,7 @@ class HomeHomeImagesDetail extends Component
     protected $rules = [
         'homeImage.order_number' => ['required', 'numeric'],
         'homeImage.caption' => ['nullable', 'max:255', 'string'],
-        'homeImageImage' => ['nullable', 'image', 'max:1024'],
+        'homeImageImage' => ['nullable', 'image', 'max:10024'],
     ];
 
     public function mount(Home $home): void

@@ -32,7 +32,7 @@ class AboutAboutImagesController extends Controller
         $validated = $request->validate([
             'order_number' => ['required', 'numeric'],
             'caption' => ['nullable', 'max:255', 'string'],
-            'image' => ['nullable', 'image', 'max:1024'],
+            'image' => ['nullable', 'image', 'max:10024'],
         ]);
 
         if ($request->hasFile('image')) {

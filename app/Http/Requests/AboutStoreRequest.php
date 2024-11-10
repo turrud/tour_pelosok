@@ -22,7 +22,7 @@ class AboutStoreRequest extends FormRequest
         return [
             'title' => ['required', 'max:255', 'string'],
             'description' => ['nullable', 'max:255', 'string'],
-            'main_image' => ['image', 'max:1024', 'nullable'],
+            'main_image' => ['image', 'max:10024', 'nullable'],
         ];
     }
 }

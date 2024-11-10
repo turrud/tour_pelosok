@@ -23,7 +23,7 @@ class PackageStoreRequest extends FormRequest
             'title' => ['required', 'max:255', 'string'],
             'description' => ['nullable', 'max:255', 'string'],
             'price' => ['required', 'max:255'],
-            'main_image' => ['image', 'max:1024', 'nullable'],
+            'main_image' => ['image', 'max:10024', 'nullable'],
         ];
     }
 }
