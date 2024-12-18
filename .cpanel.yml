@@ -1,0 +1,17 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/u1575278/public_html/testing
+    - /bin/cp -R * $DEPLOYPATH
+    # - /bin/cp .htaccess $DEPLOYPATH
+    # Cek apakah file .env sudah ada atau belum
+    - if [ ! -f "$DEPLOYPATH/.env" ]; then /bin/cp .env.example $DEPLOYPATH/.env; fi
+    - cd $DEPLOYPATH
+    # Cek apakah dependensi sudah ada atau belum
+    - if [ ! -d "vendor" ]; then /usr/local/bin/composer install --no-dev; fi
+    - php artisan migrate --force
+    - php artisan storage:link
+    - php artisan config:cache
+    - php artisan route:cache
+    - php artisan view:cache
+    - php artisan optimize
+
