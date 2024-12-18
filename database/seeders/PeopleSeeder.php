@@ -13,7 +13,7 @@ class PeopleSeeder extends Seeder
     public function run(): void
     {
         People::factory()
-            ->count(3)
+            ->count(10)
             ->create();
     }
 }

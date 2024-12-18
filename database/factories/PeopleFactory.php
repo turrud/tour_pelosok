@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\People;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Symfony\Component\VarDumper\Caster\ImgStub;
 
 class PeopleFactory extends Factory
 {
@@ -22,11 +23,12 @@ class PeopleFactory extends Factory
      */
     public function definition(): array
     {
+        // $images = 'https://res.cloudinary.com/djzee3t99/image/upload/v1708606965/ddn/img/team/id-rifqi.png';
+
         return [
             'order_number' => $this->faker->randomNumber(0),
-            'name' => $this->faker->name(),
-            'job_title' => $this->faker->sentence(2),
-            'description' => $this->faker->sentence(10),
+            'name' => 'Ahmad Ghazy',
+            'job_title' => 'CEO & CTO',
         ];
     }
 }

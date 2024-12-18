@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('phone');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('subject');
             $table->text('message');
 

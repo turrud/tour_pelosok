@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\About;
+use App\Models\People;
 use Illuminate\Http\Request;
 
 class PageAboutController extends Controller
@@ -13,8 +13,8 @@ class PageAboutController extends Controller
     public function index()
     {
         //
-        $abouts = About::with(['aboutImages', 'tagabouts'])->get();
-        return view('frontend.about.index', compact('abouts'));
+        $allPeople = People::orderBy('order_number', 'asc')->get();
+        return view('frontend.about.index', compact('allPeople'));
     }
 
     /**

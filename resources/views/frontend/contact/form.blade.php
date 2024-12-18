@@ -1,3 +1,31 @@
+<div class="pt-10">
+    @if(session('success'))
+        <div id="success-modal" class="fixed inset-0 z-10 flex items-center justify-center bg-gray-500/75 backdrop-blur-sm" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <!-- Modal -->
+            <div class="relative transform overflow-hidden rounded-lg bg-white/80 text-center shadow-xl transition-all sm:w-full sm:max-w-md">
+                <!-- Modal Content -->
+                <div class="bg-white/50 px-6 py-8">
+                    <!-- Icon -->
+                    <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                        <svg class="h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <!-- Title -->
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900"> {{ session('success') }}</h3>
+                </div>
+                <!-- Footer -->
+                <div class="bg-gray-50/80 px-6 py-4">
+                    <button type="button" id="close-button" class="w-full rounded-md bg-gray-400 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-600">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    @endif
+</div>
 <div class="pt-10"></div>
 <div class="container max-w-screen-md  mx-auto px-4 py-12">
   <!-- Page Title -->
@@ -8,7 +36,7 @@
 
     <!-- Contact Form -->
     <div class="bg-white rounded-lg mt-8">
-        <form method="POST" action="#">
+        <form method="POST" action="/contact">
             @csrf
 
             <!-- Name -->

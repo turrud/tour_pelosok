@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactStoreRequest;
 
 class PageContactController extends Controller
 {
@@ -13,9 +14,7 @@ class PageContactController extends Controller
      */
     public function index()
     {
-        //
-        $contacts = Contact::all();
-        return view('frontend.contact.index', compact('contacts'));
+        return view('frontend.contact.index');
     }
 
     /**
@@ -29,9 +28,13 @@ class PageContactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContactStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $contact = Contact::create($validated);
+
+        return redirect()->route('page.contact.index')->with('success', 'Pesan berhasil dikirim, terima kasih.');
     }
 
     /**

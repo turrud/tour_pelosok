@@ -3,7 +3,7 @@
 </div>
 <div class="container mx-auto pt-20">
     <h1 class="text-2xl font-bold text-center">---</h1>
-    </div>
+</div>
 <div class="max-w-screen-xl mx-auto pt-20 px-5 py-5">
     <!-- Main Container -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">

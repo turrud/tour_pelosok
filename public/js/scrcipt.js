@@ -93,3 +93,17 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCarousel();
 });
 //HomeCaraoselEnd
+
+// modal contact
+
+// Fungsi untuk menutup modal
+document.getElementById('close-button').addEventListener('click', function () {
+    const modal = document.getElementById('success-modal');
+        modal.style.display = 'none'; // Menyembunyikan modal
+    });
+
+
+document.getElementById('close-button').addEventListener('click', function () {
+    const modal = document.getElementById('success-modal');
+        modal.style.display = 'none'; // Menyembunyikan modal
+    });
