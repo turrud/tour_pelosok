@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('main_image')->nullable();
             $table->bigInteger('price');
 
-            $table->timestamps();
+            $table->timestamps();   
             $table->softDeletes();
         });
     }

@@ -13,7 +13,7 @@ class Package extends Model
     use Searchable;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'description', 'main_image', 'price'];
+    protected $fillable = ['title', 'description', 'location', 'main_image', 'price'];
 
     protected $searchableFields = ['*'];
 

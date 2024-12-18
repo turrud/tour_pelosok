@@ -90,7 +90,7 @@
       <!-- Login Button -->
       <a href="{{ route('register') }}"
         class="text-gray-900 block py-2 px-3 rounded hover:bg-gray-100 md:p-0 dark:text-white dark:hover:bg-gray-700">
-        Login
+        Sign Up
       </a>
       @endauth
     </div>

@@ -19,6 +19,9 @@ use App\Http\Controllers\TagexploreController;
 use App\Http\Controllers\TagpackageController;
 use App\Http\Controllers\PageContactController;
 use App\Http\Controllers\PageExploreController;
+use App\Http\Controllers\PackageSearchController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +73,20 @@ Route::resource('explore', PageExploreController::class)->names([
     'update' => 'page.explore.update',
     'destroy' => 'page.explore.destroy',
 ]);
+// Page Explore package
+// Route::get('package', [PackageSearchController::class, 'index'])->name('package.index');
+// Route::get('package/{package}', [PackageSearchController::class, 'show'])->name('package.show');
+
+Route::resource('package', PackageSearchController::class)->names([
+    'index' => 'package.index',
+    'show' => 'package.show',
+    'create' => 'package.create',
+    'store' => 'package.store',
+    'edit' => 'package.edit',
+    'update' => 'package.update',
+    'destroy' => 'package.destroy',
+]);
+
 // Page Contact
 Route::resource('contact', PageContactController::class)->names([
     'index' => 'page.contact.index',
@@ -81,6 +98,9 @@ Route::resource('contact', PageContactController::class)->names([
     'destroy' => 'page.contact.destroy',
 ]);
 // ----
+
+
+
 
 Route::middleware(['auth', 'role:super-admin'])->group(function () {
     Route::get('/dashboard')->name('dashboard');

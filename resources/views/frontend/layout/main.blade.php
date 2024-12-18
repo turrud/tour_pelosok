@@ -8,13 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/scrcipt.js') }}"></script>
 </head>
 <body class="font-filter">
     @include('frontend.layout.navbar')
     @yield('content')
     @include('frontend.layout.footer')
 
-    <script src="{{ asset('js/scrcipt.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>
