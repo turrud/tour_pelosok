@@ -9,9 +9,10 @@ deployment:
     # Cek apakah dependensi sudah ada atau belum
     - if [ ! -d "vendor" ]; then /usr/local/bin/composer install --no-dev; fi
     - php artisan migrate --force
-    - php artisan storage:link
+    - php artisan migrate:fresh --seed
     - php artisan config:cache
     - php artisan route:cache
     - php artisan view:cache
+    - php artisan optimize:clear
     - php artisan optimize
 
