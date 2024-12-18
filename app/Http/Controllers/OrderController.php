@@ -45,15 +45,24 @@ class OrderController extends Controller
      */
     public function store(OrderStoreRequest $request): RedirectResponse
     {
+        // $this->authorize('create', Order::class);
+
+        // $validated = $request->validated();
+
+        // // Ambil harga paket berdasarkan package_id yang dipilih
+        // $package = Package::find($validated['package_id']);
+        // if ($package) {
+        //     $validated['total_price'] = $validated['person'] * $package->price;
+        // }
+
+        // $order = Order::create($validated);
+
+        // return redirect()
+        //     ->route('orders.edit', $order)
+        //     ->withSuccess(__('crud.common.created'));
         $this->authorize('create', Order::class);
 
         $validated = $request->validated();
-
-        // Ambil harga paket berdasarkan package_id yang dipilih
-        $package = Package::find($validated['package_id']);
-        if ($package) {
-            $validated['total_price'] = $validated['person'] * $package->price;
-        }
 
         $order = Order::create($validated);
 
@@ -89,14 +98,23 @@ class OrderController extends Controller
         OrderUpdateRequest $request,
         Order $order
     ): RedirectResponse {
+        // $this->authorize('update', $order);
+
+        // $validated = $request->validated();
+
+        // $package = Package::find($validated['package_id']);
+        // if ($package) {
+        //     $validated['total_price'] = $validated['person'] * $package->price;
+        // }
+
+        // $order->update($validated);
+
+        // return redirect()
+        //     ->route('orders.edit', $order)
+        //     ->withSuccess(__('crud.common.saved'));
         $this->authorize('update', $order);
 
         $validated = $request->validated();
-
-        $package = Package::find($validated['package_id']);
-        if ($package) {
-            $validated['total_price'] = $validated['person'] * $package->price;
-        }
 
         $order->update($validated);
 

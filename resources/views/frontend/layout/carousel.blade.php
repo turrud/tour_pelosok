@@ -1,14 +1,15 @@
-<div class="container max-w-screen-xl mx-auto px-4">
+<div class="pt-2"></div>
+<div class="container max-w-screen-xl mx-auto px-4 pt-20">
     <!-- Carousel Wrapper -->
-    <div id="homes-carousel" class="relative w-full" data-carousel="slide">
+    <div id="homes-carousel" class="relative w-full z-10" data-carousel="slide">
         <!-- Carousel items container -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
             <!-- No Results Message -->
             <div id="no-results" class="hidden absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
-                {{-- <div class="text-xl text-gray-600 text-center">
+                <div class="text-xl text-gray-600 text-center">
                     <p>No homes found for the selected filter.</p>
                     <p>Please try another category.</p>
-                </div> --}}
+                </div>
             </div>
 
             @foreach ($homes as $index => $home)
@@ -34,13 +35,13 @@
                                 </a>
                             </h2>
                             <p class="mb-2">{{ Str::limit($home->description, 150) }}</p>
-                            <div class="flex flex-wrap gap-2">
+                            {{-- <div class="flex flex-wrap gap-2">
                                 @foreach ($home->taghomes as $tag)
                                     <span class="px-2 py-1 bg-blue-500 rounded-full text-sm">
                                         {{ $tag->name }}
                                     </span>
                                 @endforeach
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

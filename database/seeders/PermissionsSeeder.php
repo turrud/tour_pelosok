@@ -11,6 +11,8 @@ class PermissionsSeeder extends Seeder
 {
     public function run(): void
     {
+
+        Role::create(['name' => 'user']);
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
@@ -105,10 +107,6 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'update tagpackages']);
         Permission::create(['name' => 'delete tagpackages']);
 
-        // Create user role and assign existing permissions
-        $currentPermissions = Permission::all();
-        $userRole = Role::create(['name' => 'user']);
-        $userRole->givePermissionTo($currentPermissions);
 
         // Create admin exclusive permissions
         Permission::create(['name' => 'list roles']);
@@ -129,12 +127,13 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'update users']);
         Permission::create(['name' => 'delete users']);
 
+
         // Create admin role and assign all permissions
         $allPermissions = Permission::all();
         $adminRole = Role::create(['name' => 'super-admin']);
         $adminRole->givePermissionTo($allPermissions);
 
-        $user = \App\Models\User::whereEmail('admin@admin.com')->first();
+        $user = \App\Models\User::whereEmail('admin@pelosoknusantara.com')->first();
 
         if ($user) {
             $user->assignRole($adminRole);

@@ -17,6 +17,17 @@
                     </x-nav-link>
                 </div>
 
+                @if (Auth::user()->can('view-any', App\Models\Home::class))
+                    <x-nav-dropdown title="Front Page" align="right" width="48">
+                        @can('view-any', App\Models\Home::class)
+                            <x-dropdown-link href="{{ route('page.homes.index') }}">
+                                Pelosok Nusantara
+                            </x-dropdown-link>
+                        @endcan
+                    </x-nav-dropdown>
+                @endif
+
+
                 @if (Auth::user()->can('view-any', App\Models\User::class) ||
                     Auth::user()->can('view-any', App\Models\Home::class) ||
                     Auth::user()->can('view-any', App\Models\Taghome::class) ||
@@ -232,79 +243,87 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-                @can('view-any', App\Models\User::class)
-                <x-responsive-nav-link href="{{ route('users.index') }}">
-                Users
+            @can('view-any', App\Models\Home::class)
+                <x-responsive-nav-link href="{{ route('page.homes.index') }}" :active="request()->routeIs('page.homes.index')">
+                    {{ __('Pelosok Nusantara') }}
                 </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Home::class)
-                <x-responsive-nav-link href="{{ route('homes.index') }}">
-                Homes
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Taghome::class)
-                <x-responsive-nav-link href="{{ route('taghomes.index') }}">
-                Taghomes
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\About::class)
-                <x-responsive-nav-link href="{{ route('abouts.index') }}">
-                Abouts
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Tagabout::class)
-                <x-responsive-nav-link href="{{ route('tagabouts.index') }}">
-                Tagabouts
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\People::class)
-                <x-responsive-nav-link href="{{ route('all-people.index') }}">
-                All People
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Package::class)
-                <x-responsive-nav-link href="{{ route('packages.index') }}">
-                Packages
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Tagpackage::class)
-                <x-responsive-nav-link href="{{ route('tagpackages.index') }}">
-                Tagpackages
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Order::class)
-                <x-responsive-nav-link href="{{ route('orders.index') }}">
-                Orders
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Explore::class)
-                <x-responsive-nav-link href="{{ route('explores.index') }}">
-                Explores
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Tagexplore::class)
-                <x-responsive-nav-link href="{{ route('tagexplores.index') }}">
-                Tagexplores
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Contact::class)
-                <x-responsive-nav-link href="{{ route('contacts.index') }}">
-                Contacts
-                </x-responsive-nav-link>
+            @endcan
+
+            @can('view-any', App\Models\User::class)
+            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+            Users
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Home::class)
+            <x-responsive-nav-link href="{{ route('homes.index') }}" :active="request()->routeIs('homes.index')">
+            Homes
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Taghome::class)
+            <x-responsive-nav-link href="{{ route('taghomes.index') }}" :active="request()->routeIs('taghomes.index')">
+            Taghomes
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\About::class)
+            <x-responsive-nav-link href="{{ route('abouts.index') }}" :active="request()->routeIs('abouts.index')">
+            Abouts
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Tagabout::class)
+            <x-responsive-nav-link href="{{ route('tagabouts.index') }}" :active="request()->routeIs('tagabouts.index')">
+            Tagabouts
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\People::class)
+            <x-responsive-nav-link href="{{ route('all-people.index') }}" :active="request()->routeIs('all-people.index')">
+            All People
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Package::class)
+            <x-responsive-nav-link href="{{ route('packages.index') }}" :active="request()->routeIs('packages.index')">
+            Packages
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Tagpackage::class)
+            <x-responsive-nav-link href="{{ route('tagpackages.index') }}" :active="request()->routeIs('tagpackages.index')">
+            Tagpackages
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Order::class)
+            <x-responsive-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index')">
+            Orders
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Explore::class)
+            <x-responsive-nav-link href="{{ route('explores.index') }}" :active="request()->routeIs('explores.index')">
+            Explores
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Tagexplore::class)
+            <x-responsive-nav-link href="{{ route('tagexplores.index') }}" :active="request()->routeIs('tagexplores.index')">
+            Tagexplores
+            </x-responsive-nav-link>
+            @endcan
+            @can('view-any', App\Models\Contact::class)
+            <x-responsive-nav-link href="{{ route('contacts.index') }}" :active="request()->routeIs('contacts.index')">
+            Contacts
+            </x-responsive-nav-link>
+            @endcan
+
+            @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
+                Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
+
+                @can('view-any', Spatie\Permission\Models\Role::class)
+                <x-responsive-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
+                    Roles</x-responsive-nav-link>
                 @endcan
 
-                @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
-                    Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
+                @can('view-any', Spatie\Permission\Models\Permission::class)
+                <x-responsive-nav-link href="{{ route('permissions.index') }}" :active="request()->routeIs('permissions.index')">
+                    Permissions</x-responsive-nav-link>
+                @endcan
 
-                    @can('view-any', Spatie\Permission\Models\Role::class)
-                    <x-responsive-nav-link href="{{ route('roles.index') }}">Roles</x-responsive-nav-link>
-                    @endcan
-
-                    @can('view-any', Spatie\Permission\Models\Permission::class)
-                    <x-responsive-nav-link href="{{ route('permissions.index') }}">Permissions</x-responsive-nav-link>
-                    @endcan
-
-                @endif
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

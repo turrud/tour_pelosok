@@ -82,6 +82,10 @@ Route::resource('contact', PageContactController::class)->names([
 ]);
 // ----
 
+Route::middleware(['auth', 'role:super-admin'])->group(function () {
+    Route::get('/dashboard')->name('dashboard');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', function () {
         return view('dashboard');
