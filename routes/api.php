@@ -2,42 +2,43 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AboutController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\PaketController;
 use App\Http\Controllers\Api\PeopleController;
-use App\Http\Controllers\Api\TaghomeController;
-use App\Http\Controllers\Api\PackageController;
-use App\Http\Controllers\Api\ExploreController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\ExploreController;
+use App\Http\Controllers\Api\PackageController;
+use App\Http\Controllers\Api\TaghomeController;
 use App\Http\Controllers\Api\TagaboutController;
 use App\Http\Controllers\Api\HomeImageController;
 use App\Http\Controllers\Api\AboutImageController;
-use App\Http\Controllers\Api\TagpackageController;
-use App\Http\Controllers\Api\TagexploreController;
 use App\Http\Controllers\Api\PermissionController;
-use App\Http\Controllers\Api\HomeTaghomesController;
-use App\Http\Controllers\Api\home_taghomeController;
-use App\Http\Controllers\Api\TaghomeHomesController;
-use App\Http\Controllers\Api\PackageImageController;
+use App\Http\Controllers\Api\TagexploreController;
+use App\Http\Controllers\Api\TagpackageController;
 use App\Http\Controllers\Api\ExploreImageController;
+use App\Http\Controllers\Api\home_taghomeController;
+use App\Http\Controllers\Api\HomeTaghomesController;
+use App\Http\Controllers\Api\PackageImageController;
+use App\Http\Controllers\Api\TaghomeHomesController;
 use App\Http\Controllers\Api\PackageOrdersController;
-use App\Http\Controllers\Api\HomeHomeImagesController;
-use App\Http\Controllers\Api\AboutTagaboutsController;
-use App\Http\Controllers\Api\TagaboutAboutsController;
 use App\Http\Controllers\Api\about_tagaboutController;
+use App\Http\Controllers\Api\AboutTagaboutsController;
+use App\Http\Controllers\Api\HomeHomeImagesController;
+use App\Http\Controllers\Api\TagaboutAboutsController;
 use App\Http\Controllers\Api\AboutAboutImagesController;
-use App\Http\Controllers\Api\PackageTagpackagesController;
-use App\Http\Controllers\Api\TagpackagePackagesController;
-use App\Http\Controllers\Api\package_tagpackageController;
-use App\Http\Controllers\Api\ExploreTagexploresController;
-use App\Http\Controllers\Api\TagexploreExploresController;
 use App\Http\Controllers\Api\explore_tagexploreController;
-use App\Http\Controllers\Api\PackagePackageImagesController;
+use App\Http\Controllers\Api\ExploreTagexploresController;
+use App\Http\Controllers\Api\package_tagpackageController;
+use App\Http\Controllers\Api\PackageTagpackagesController;
+use App\Http\Controllers\Api\TagexploreExploresController;
+use App\Http\Controllers\Api\TagpackagePackagesController;
 use App\Http\Controllers\Api\ExploreExploreImagesController;
+use App\Http\Controllers\Api\PackagePackageImagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -248,5 +249,6 @@ Route::name('api.')
             'destroy',
         ])->name('tagexplores.explores.destroy');
 
+        Route::apiResource('pakets', PaketController::class);
         Route::apiResource('contacts', ContactController::class);
     });

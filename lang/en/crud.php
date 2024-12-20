@@ -315,6 +315,20 @@ return [
             'status' => 'Status',
         ],
     ],
+    'pakets' => [
+        'name' => 'Pakets',
+        'index_title' => 'Pakets List',
+        'new_title' => 'New Paket',
+        'create_title' => 'Create Paket',
+        'edit_title' => 'Edit Paket',
+        'show_title' => 'Show Paket',
+        'inputs' => [
+            'image' => 'Image',
+            'title' => 'Title',
+            'fasilitas' => 'Fasilitas',
+            'price' => 'Price',
+        ],
+    ],
 
     'roles' => [
         'name' => 'Roles',

@@ -6,6 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaketController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExploreController;
@@ -14,12 +15,18 @@ use App\Http\Controllers\TaghomeController;
 use App\Http\Controllers\PageHomeController;
 use App\Http\Controllers\TagaboutController;
 use App\Http\Controllers\PageAboutController;
+use App\Http\Controllers\PageOrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\TagexploreController;
 use App\Http\Controllers\TagpackageController;
 use App\Http\Controllers\PageContactController;
 use App\Http\Controllers\PageExploreController;
 use App\Http\Controllers\PackageSearchController;
+use App\Http\Controllers\PaymentController;
+
+Route::get('/checkout', [PaymentController::class, 'checkout'])->name('checkout');
+Route::post('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
+
 
 
 
@@ -38,6 +45,7 @@ use App\Http\Controllers\PackageSearchController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 
 
 // Route untuk PageHomeController (public)
@@ -86,6 +94,9 @@ Route::resource('package', PackageSearchController::class)->names([
     'update' => 'package.update',
     'destroy' => 'package.destroy',
 ]);
+// order
+
+Route::get('order', [PageOrderController::class, 'index'])->name('order.index');
 
 // Page Contact
 Route::resource('contact', PageContactController::class)->names([
@@ -139,5 +150,6 @@ Route::prefix('/dashboard')
         Route::resource('orders', OrderController::class);
         Route::resource('explores', ExploreController::class);
         Route::resource('tagexplores', TagexploreController::class);
+        Route::resource('pakets', PaketController::class);
         Route::resource('contacts', ContactController::class);
     });

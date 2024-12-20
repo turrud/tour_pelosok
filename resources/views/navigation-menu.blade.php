@@ -39,6 +39,7 @@
                     Auth::user()->can('view-any', App\Models\Order::class) ||
                     Auth::user()->can('view-any', App\Models\Explore::class) ||
                     Auth::user()->can('view-any', App\Models\Tagexplore::class) ||
+                    Auth::user()->can('view-any', App\Models\Paket::class) ||
                     Auth::user()->can('view-any', App\Models\Contact::class))
                 <x-nav-dropdown title="Apps" align="right" width="48">
                         @can('view-any', App\Models\User::class)
@@ -94,6 +95,11 @@
                         @can('view-any', App\Models\Tagexplore::class)
                         <x-dropdown-link href="{{ route('tagexplores.index') }}">
                         Tagexplores
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Paket::class)
+                        <x-dropdown-link href="{{ route('pakets.index') }}">
+                        Pakets
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Contact::class)
@@ -304,6 +310,11 @@
             Tagexplores
             </x-responsive-nav-link>
             @endcan
+            @can('view-any', App\Models\Paket::class)
+                <x-responsive-nav-link href="{{ route('pakets.index') }}">
+                Pakets
+                </x-responsive-nav-link>
+                @endcan
             @can('view-any', App\Models\Contact::class)
             <x-responsive-nav-link href="{{ route('contacts.index') }}" :active="request()->routeIs('contacts.index')">
             Contacts

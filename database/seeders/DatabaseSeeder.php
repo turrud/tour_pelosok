@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsSeeder::class);
 
         $this->call(AboutSeeder::class);
+        $this->call(PaketSeeder::class);
         $this->call(AboutImageSeeder::class);
         $this->call(ContactSeeder::class);
         $this->call(ExploreSeeder::class);
